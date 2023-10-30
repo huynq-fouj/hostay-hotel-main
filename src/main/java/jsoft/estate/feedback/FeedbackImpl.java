@@ -19,8 +19,8 @@ public class FeedbackImpl extends BasicImpl implements Feedback {
 	public boolean AddFeedback(FeedbackObject item) {
 		// TODO Auto-generated method stub
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO tblfeedback(feedback_title, feedback_content, feedback_email, feedback_fullname, feedback_created_date) ");
-		sql.append("VALUES(?,?,?,?,?);");
+		sql.append("INSERT INTO tblfeedback(feedback_title, feedback_content, feedback_email, feedback_fullname, feedback_created_date, feedback_view) ");
+		sql.append("VALUES(?,?,?,?,?,?);");
 		try {
 			PreparedStatement pre = this.con.prepareStatement(sql.toString());
 			pre.setString(1, item.getFeedback_title());
@@ -28,6 +28,7 @@ public class FeedbackImpl extends BasicImpl implements Feedback {
 			pre.setString(3, item.getFeedback_email());
 			pre.setString(4, item.getFeedback_fullname());
 			pre.setString(5, item.getFeedback_created_date());
+			pre.setBoolean(6, false);			
 			return this.add(pre);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

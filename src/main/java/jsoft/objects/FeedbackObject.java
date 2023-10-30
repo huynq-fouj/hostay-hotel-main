@@ -10,7 +10,7 @@ public class FeedbackObject {
 	private String feedback_phone;
 	private short feedback_product_id;
 	private String feedback_created_date;
-	private String feedback_view;
+	private boolean feedback_view;
 	private String feedback_company;
 	private String feedback_intro;
 
@@ -50,7 +50,7 @@ public class FeedbackObject {
 		return feedback_created_date;
 	}
 
-	public String getFeedback_view() {
+	public boolean isFeedback_view() {
 		return feedback_view;
 	}
 
@@ -98,7 +98,7 @@ public class FeedbackObject {
 		this.feedback_created_date = feedback_created_date;
 	}
 
-	public void setFeedback_view(String feedback_view) {
+	public void setFeedback_view(boolean feedback_view) {
 		this.feedback_view = feedback_view;
 	}
 
