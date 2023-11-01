@@ -26,14 +26,25 @@ public class RoomImpl extends BasicImpl implements Room {
 	public ArrayList<ResultSet> getRoomObjects(Triplet<RoomObject, Short, Byte> infors) {
 		// TODO Auto-generated method stub
 		RoomObject similar = infors.getValue0();
-		byte page = infors.getValue2();
-		int at = (infors.getValue1() - 1) * page;
+		byte total = infors.getValue2();
+		int at = (infors.getValue1() - 1) * total;
 		StringBuilder sql = new StringBuilder();
-		//
-		
-		//
+		//Lấy danh sach phòng
+		sql.append("SELECT * FROM tblroom WHERE room_enabe=1 ");
+		sql.append(this.createConditions(similar));
+		sql.append("LIMIT " + at + ", " + total);
+		sql.append(";");
+		//Lấy số lượng phòng
 		sql.append("SELECT COUNT(*) AS total FROM tblroom WHERE room_enable=1 ");
-		return null;
+		sql.append(this.createConditions(similar));
+		sql.append(";");
+		return this.getReList(sql.toString());
+	}
+	
+	public StringBuilder createConditions(RoomObject similar) {
+		StringBuilder tmp = new StringBuilder();
+		
+		return tmp;
 	}
 	
 }
